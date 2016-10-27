@@ -1,0 +1,37 @@
+<% include ./particles/header.ejs %>
+
+<h1>Results</h1>
+
+<table class="table table-condensed">
+  <thead>
+  <tr>
+    <th>File Name</th>
+    <th>Created At</th>
+    <th>Modified At</th>
+    <th>Size, Kb</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% files.forEach(function(file) { %>
+  <tr>
+    <th scope="row"><%= file.name %></th>
+    <td><%= file.createdTime %></td>
+    <td><%= file.modifiedTime %></td>
+    <td><% if (file.size) { %><small><%= file.size %></small> <% } %></td>
+  </tr>
+  <% }); %>
+  </tbody>
+</table>
+
+
+<hr>
+<nav>
+  <ul class="pagination">
+    <% for(var i=0; i < pages; i++) {%>
+      <li class=""><a href="?page=<%= i %>"><%= i %></a></li>
+    <% } %>
+  </ul>
+</nav>
+
+
+<% include ./particles/footer.ejs %>
